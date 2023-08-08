@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from inventory.product.models import Product
 from inventory.product.schemas import ProductSchema
 from inventory.product.utils import get_db, create_product_util, get_product_util, all_products_util, del_product_util, \
-    sub_quantity
+    change_product_quantity_util
 from inventory.database import Base, engine
 import requests
 
@@ -28,6 +28,11 @@ def create_product(product: ProductSchema, db: Session = Depends(get_db)):
 @app.get("/products/{product_id}")
 def get_product(product_id: int, db: Session = Depends(get_db)):
     return get_product_util(db, product_id)
+
+
+@app.put("/products/{product_id}/{quantity}")
+def change_product_quantity(product_id: int, quantity: int, db: Session = Depends(get_db)):
+    return change_product_quantity_util(db, product_id, quantity)
 
 
 @app.get("/products")

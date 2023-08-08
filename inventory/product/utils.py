@@ -38,8 +38,8 @@ def del_product_util(db: Session, product_id: int):
     return False
 
 
-def sub_quantity(db: Session, product_id: int, quantity: int):
+def change_product_quantity_util(db: Session, product_id: int, quantity: int):
     product = db.query(Product).get(product_id)
-    if quantity and product:
-        product.quantity -= quantity
+    if product:
+        product.quantity = quantity
         db.commit()

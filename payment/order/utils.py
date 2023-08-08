@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from payment.order.models import Order
 from payment.order.schemas import OrderSchema
 from payment.database import SessionLocal
-import time
+import requests
 
 
 def get_db():
