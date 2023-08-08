@@ -3,8 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from inventory.product.models import Product
 from inventory.product.schemas import ProductSchema
-from inventory.product.utils import get_db, create_product_util, get_product_util, all_products_util, del_product_util
+from inventory.product.utils import get_db, create_product_util, get_product_util, all_products_util, del_product_util, \
+    sub_quantity
 from inventory.database import Base, engine
+import requests
 
 Base.metadata.create_all(bind=engine)
 
