@@ -41,5 +41,5 @@ def all_products(db: Session = Depends(get_db)):
 
 
 @app.delete("/products/{product_id}")
-def all_products(product_id: int, db: Session = Depends(get_db)):
+def delete_product(product_id: int, db: Session = Depends(get_db)):
     return del_product_util(db, product_id)
